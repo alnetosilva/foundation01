@@ -74,3 +74,19 @@ and open the template in the editor.
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;
 }
+.navbar-brand>img {
+   max-height: 100%;
+   width: auto;
+   float: left;
+   padding-right: 10px;
+   /* probably not needed anymore, but doesn't hurt */
+   -o-object-fit: contain;
+   object-fit: contain;
+
+}
+.navbar-brand {
+    font-size: 18px;
+    line-height: 63px;
+    padding: 4px;
+    padding-right: 15px;
+}

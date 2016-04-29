@@ -63,8 +63,10 @@ and open the template in the editor.
                 require_once './home.php';
                 break;
         }
+        
         ?>
         </div>
+        <?php require_once './rodape.php'; ?>
         <script type="text/javascript" src="./Bootstrap/js/jquery.js"></script>
         <script type="text/javascript" src="./Bootstrap/js/bootstrap.min.js"></script>
     </body>
