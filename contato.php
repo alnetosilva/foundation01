@@ -27,7 +27,7 @@ if($_POST):
             <div class="form-group">
                 <div class="control-label col-sm-2"></div>
                 <div class="col-sm-10 col-md-8">
-                    <a href="?pg=contato" class="btn btn-success form-control"><span class="glyphicon glyphicon-circle-arrow-left"></span> Voltar</a>
+                    <a href="<?=$url?>/contato" class="btn btn-success form-control"><span class="glyphicon glyphicon-circle-arrow-left"></span> Voltar</a>
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@ else :
         Deixe aqui o seu recado!
     </div>
 
-    <form class="form-horizontal" action="?pg=contato" method="post">
+    <form class="form-horizontal" action="<?=$url?>/contato" method="post">
         <div class="panel-body">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="nome">Nome:</label>

@@ -1,3 +1,10 @@
+<?php
+$url = "http://" . $_SERVER['HTTP_HOST'];
+$uri = $_SERVER['REQUEST_URI'];
+$uri = trim($uri, "/");
+$uri = $uri ? $uri : "home";
+$file = $uri . ".php";
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -9,31 +16,11 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-sacale=1.0">
-        <link href="./Bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="./Bootstrap/css/css.css" rel="stylesheet">
+        <link href="<?=$url?>/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<?=$url?>/Bootstrap/css/css.css" rel="stylesheet">
         <title>
             <?php
-            $pagina = (isset($_GET['pg'])) ? $_GET['pg'] : "home";
-            switch ($pagina) {
-                case "home":
-                    echo "Home";
-                    break;
-                case "empresa":
-                    echo 'Empresa';
-                    break;
-                case "produto":
-                    echo 'Produtos';
-                    break;
-                case "servico":
-                    echo 'Serviços';
-                    break;
-                case "contato":
-                    echo 'Contato';
-                    break;
-                default:
-                    echo 'Home';
-                    break;
-            }
+            echo (file_exists($file)) ? $uri : "Erro 404";
             ?>
         </title>
     </head>
@@ -42,32 +29,16 @@ and open the template in the editor.
         require_once 'menu.php';
         ?>
         <div class="container">
-        <?php
-        switch ($pagina) {
-            case "home":
-                require_once './home.php';
-                break;
-            case "empresa":
-                require_once './empresa.php';
-                break;
-            case "produto":
-                require_once './produto.php';
-                break;
-            case "servico":
-                require_once './servico.php';
-                break;
-            case "contato":
-                require_once './contato.php';
-                break;
-            default:
-                require_once './home.php';
-                break;
-        }
-        
-        ?>
+            <?php
+            if (file_exists($file)) {
+                require_once $file;
+            } else {
+                require_once "404.php";
+            }
+            ?>
         </div>
         <?php require_once './rodape.php'; ?>
-        <script type="text/javascript" src="./Bootstrap/js/jquery.js"></script>
-        <script type="text/javascript" src="./Bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="<?=$url?>/Bootstrap/js/jquery.js"></script>
+        <script type="text/javascript" src="<?=$url?>/Bootstrap/js/bootstrap.min.js"></script>
     </body>
 </html>
